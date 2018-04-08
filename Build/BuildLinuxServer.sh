@@ -16,6 +16,9 @@ build() {
   for build in "${builds[@]}"; do
     echo "Building ${directory}/${build}..."
     pushd "${build}"
+    if [[ "${build}" == "Gadgets" ]]; then
+      mkdir -p ReleaseLinux/obj
+    fi
     make -j2 BUILD_CONFIGURATION="ReleaseLinux" CC=$CC CXX=$CXX INTERMEDIATE_DIR="./ReleaseLinux/obj" DESTINATION_DIR="../Bin"
     popd
   done
