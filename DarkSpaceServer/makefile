@@ -54,7 +54,7 @@ AR= ar
 CFLAGS= -g -O2 -I ../ -I ../../Medusa/
 CXXFLAGS= -g -O2 -I ../ -I ../../Medusa/ -std=c++0x
 ARFLAGS= cru
-LDFLAGS= -L ../Bin/ -L ../../Medusa/Bin/ -L ../../Medusa/ThirdParty/LuaJIT/bin/ -lMedusa -lDarkSpace -lWorld -lNetwork -lGCQ -lRender3D -llua51 -lpthread -ldl
+LDFLAGS= -L ../Bin/ -L ../../Medusa/Bin/ -L /usr/lib -lMedusa -lDarkSpace -lWorld -lNetwork -lGCQ -lRender3D -lluajit-5.1 -lpthread -ldl
 RESULT=DarkSpaceServer
 INTERMEDIATE_DIR=ReleaseLinux/obj
 DESTINATION_DIR=../Bin

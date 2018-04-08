@@ -51,8 +51,8 @@ ifeq ("$(BUILD_CONFIGURATION)","ReleaseLinux")
 CC= gcc
 CXX= g++
 AR= ar
-CFLAGS= -g -O2 -I ../ -I ../../Medusa/ -I ../../Medusa/ThirdParty/LuaJIT/src/
-CXXFLAGS= -g -O2 -I ../ -I ../../Medusa/ -I ../../Medusa/ThirdParty/LuaJIT/src/ -std=c++0x
+CFLAGS= -g -O2 -I ../ -I ../../Medusa/ -I /usr/include/luajit-2.0/
+CXXFLAGS= -g -O2 -I ../ -I ../../Medusa/ -I /usr/include/luajit-2.0/ -std=c++0x
 ARFLAGS= cru
 LDFLAGS= -shared
 RESULT=libDarkSpace.so
