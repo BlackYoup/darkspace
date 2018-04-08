@@ -35,24 +35,15 @@ ifeq ("$(BUILD_CONFIGURATION)","DebugLinux")
 CC= gcc
 CXX= g++
 AR= ar
-CFLAGS= -g -I ../ -I ../../Medusa/ -D_DEBUG -std=c0x
+CFLAGS= -g -I ../ -I ../../Medusa/ -D_DEBUG
 CXXFLAGS= -g -I ../ -I ../../Medusa/ -D_DEBUG -std=c++0x
 ARFLAGS= cru
 LDFLAGS= -L ../Bin/ -L ../../Medusa/Bin/ -L ../../Medusa/ThirdParty/LuaJIT/bin/ -lMedusaD -lDarkSpaceD -lWorldD -lNetworkD -lGCQD -lRender3DD -llua51D -lpthread -ldl
 RESULT=DarkSpaceServerD
 INTERMEDIATE_DIR=DebugLinux/obj
 DESTINATION_DIR=../Bin
-ifeq ("$(PLATFORM)","cygwin")
-	RM=rm -f
-	MKDIR=mkdir -p
-	INTERMEDIATE_DIR_MK=$(INTERMEDIATE_DIR)
-	DESTINATION_DIR_MK=$(DESTINATION_DIR)
-else
-	RM= rm -f
-	MKDIR= mkdir -p
-	INTERMEDIATE_DIR_MK=DebugLinux/obj
-	DESTINATION_DIR_MK=../Bin
-endif
+RM=rm -f
+MKDIR=mkdir -p
 
 endif
 
@@ -60,24 +51,15 @@ ifeq ("$(BUILD_CONFIGURATION)","ReleaseLinux")
 CC= gcc
 CXX= g++
 AR= ar
-CFLAGS= -g -O2 -I ../ -I ../../Medusa/ -std=c0x
+CFLAGS= -g -O2 -I ../ -I ../../Medusa/
 CXXFLAGS= -g -O2 -I ../ -I ../../Medusa/ -std=c++0x
 ARFLAGS= cru
 LDFLAGS= -L ../Bin/ -L ../../Medusa/Bin/ -L ../../Medusa/ThirdParty/LuaJIT/bin/ -lMedusa -lDarkSpace -lWorld -lNetwork -lGCQ -lRender3D -llua51 -lpthread -ldl
 RESULT=DarkSpaceServer
 INTERMEDIATE_DIR=ReleaseLinux/obj
 DESTINATION_DIR=../Bin
-ifeq ("$(PLATFORM)","cygwin")
-	RM=rm -f
-	MKDIR=mkdir -p
-	INTERMEDIATE_DIR_MK=$(INTERMEDIATE_DIR)
-	DESTINATION_DIR_MK=$(DESTINATION_DIR)
-else
-	RM= rm -f
-	MKDIR= mkdir -p
-	INTERMEDIATE_DIR_MK=ReleaseLinux/obj
-	DESTINATION_DIR_MK=../Bin
-endif
+RM=rm -f
+MKDIR=mkdir -p
 
 endif
 
@@ -94,16 +76,16 @@ OBJECTPATHS=$(addprefix $(INTERMEDIATE_DIR)/,$(OBJECTNAMES))
 
 $(DESTINATION_DIR)/$(RESULT): $(OBJECTNAMES)
 ifeq ("$(wildcard $(DESTINATION_DIR) )","")
-	-$(MKDIR) $(DESTINATION_DIR_MK)
+	-$(MKDIR) $(DESTINATION_DIR)
 endif
 	$(CXX) $(CXXFLAGS) $(SYSROOTFLAGS) $(OBJECTPATHS) -o $@ $(LDFLAGS)
 
 $(INTERMEDIATE_DIR)/DarkSpaceServer.d: $(SOURCES) $(HEADERS)
 ifeq ("$(wildcard $(DESTINATION_DIR) )","")
-	-$(MKDIR) $(DESTINATION_DIR_MK)
+	-$(MKDIR) $(DESTINATION_DIR)
 endif
 ifeq ("$(wildcard $(INTERMEDIATE_DIR) )","")
-	-$(MKDIR) $(INTERMEDIATE_DIR_MK)
+	-$(MKDIR) $(INTERMEDIATE_DIR)
 endif
 	$(CXX) $(CXXFLAGS) -MM $(SOURCEPATHS) > $@
 
