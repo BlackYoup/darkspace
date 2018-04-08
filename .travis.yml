@@ -12,6 +12,8 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-4.4
+            - mysql-client-5.5
+            - libluajit-5.1-dev
       env:
         - MATRIX_EVAL="CC=gcc-4.4 && CXX=g++-4.4"
 
@@ -23,6 +25,6 @@ before_install:
 install:
   - mv "$TRAVIS_BUILD_DIR/../darkspace" "${WORK}/darkspace"
   - git clone --branch=linux-build --depth=1 https://github.com/blackyoup/medusa.git "${WORK}/Medusa"
-  - git clone --branch=develop --depth=1 https://github.com/palestar/gamecq.git "${WORK}/GameCQ"
+  - git clone --branch=linux-build --depth=1 https://github.com/blackyoup/gamecq.git "${WORK}/GameCQ"
 
 script: ./Build/BuildLinuxServer.sh
