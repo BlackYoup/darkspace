@@ -38,7 +38,7 @@ AR= ar
 CFLAGS= -g -I ../ -I ../../Medusa/ -D_DEBUG
 CXXFLAGS= -g -I ../ -I ../../Medusa/ -D_DEBUG -std=c++0x
 ARFLAGS= cru
-LDFLAGS= -L ../Bin/ -L ../../Medusa/Bin/ -L ../../Medusa/ThirdParty/LuaJIT/bin/ -lMedusaD -lDarkSpaceD -lWorldD -lNetworkD -lGCQD -lRender3DD -llua51D -lpthread -ldl
+LDFLAGS= -L ../Bin/ -L ../../Medusa/Bin/ -L ../../Medusa/ThirdParty/LuaJIT/bin/ -lMedusaD -lDarkSpaceD -lWorldD -lNetworkD -lGCQD -lRender3DD -lluajit-5.1 -lpthread -ldl
 RESULT=DarkSpaceServerD
 INTERMEDIATE_DIR=DebugLinux/obj
 DESTINATION_DIR=../Bin
